@@ -1,7 +1,7 @@
 Dodo
 ====
 
-> Periodically unfollow tweeters in a private Twitter list.
+> Periodically unfollow Twitter users in a private Twitter list.
 
 ### Running Locally
 
