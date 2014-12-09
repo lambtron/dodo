@@ -1,6 +1,8 @@
 Dodo
 ====
 
+![](http://fxcnews.com/wp-content/uploads/2014/11/dodo_bird.jpg)
+
 > Periodically unfollow Twitter users in a private Twitter list.
 
 ### Running Locally
