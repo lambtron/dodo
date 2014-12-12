@@ -21,6 +21,14 @@ Routes.index = function *index() {
 };
 
 /**
+ * Initiate signin with Twitter oauth flow.
+ */
+
+Routes.oauth = function *oauth() {
+  // Send to twitter.
+};
+
+/**
  * Expose `Routes`.
  */
 
