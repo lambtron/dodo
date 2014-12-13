@@ -38,7 +38,7 @@ Routes.callback = function *callback() {
     token: this.request.query.oauth_token,
     verifier: this.request.query.oauth_verifier
   };
-  var user = yield Tweet.getAccessToken(request);
+  var user = yield Tweet.getUser(request);
   yield Users.insert(user);
   this.body = yield render('success');
 };
