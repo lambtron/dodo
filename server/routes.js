@@ -4,6 +4,7 @@
  */
 
 var render = require('../lib/render');
+var Users = require('../lib/users');
 var Tweet = require('./tweet');
 
 /**
@@ -26,6 +27,26 @@ Routes.index = function *index() {
 
 Routes.oauth = function *oauth() {
   this.body = yield Tweet.getRequestToken();
+};
+
+/**
+ * Callback for Twitter oauth.
+ */
+
+Routes.callback = function *callback() {
+  var request = {
+    token: this.request.query.oauth_token,
+    verifier: this.request.query.oauth_verifier
+  };
+  var access = yield Tweet.getAccessToken(request);
+  var user = {
+    user_id: access.res.user_id,
+    handle: access.res.screen_name,
+    token: access.token,
+    secret: access.secret
+  };
+  yield Users.insert(user);
+  this.body = yield render('success');
 };
 
 /**
