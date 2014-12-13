@@ -47,14 +47,14 @@ Tweet.getUser = function *gerUser(request) {
 };
 
 /**
- * Get `Dodo` list id
+ * Get `Dodo` list id.
  *
  * @param {String} userId
  *
  * @return {Number}
  */
 
-Tweet.getDodoListId = function *getDodoList(userId) {
+Tweet.getDodoListId = function *getDodoListId(userId) {
   var res = yield Twitter.get('lists/ownerships', { user_id: userId });
   var lists = res.lists;
   for (var i = 0; i < lists.length; i++) {
@@ -82,11 +82,9 @@ Tweet.getMembersInList = function *getMembersInList(id) {
  * Unfollow members in list.
  *
  * @param {Array} members
- *
- * @return {}
  */
 
-Tweet.unfollowUsersInList = function *unfollowUsersInList(members) {
+Tweet.unfollowMembersInList = function *unfollowMembersInList(members) {
   for (var i = 0; i < members.length; i++) {
     unfollowMember(members[i].id);
   }
