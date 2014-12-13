@@ -26,7 +26,8 @@ Routes.index = function *index() {
 
 Routes.oauth = function *oauth() {
   var token = yield Tweet.getRequestToken();
-  this.body = yield render('oauth', { token: token });
+  // this.body = yield render('oauth', { token: token });
+  this.body = token;
 };
 
 /**
