@@ -13,52 +13,6 @@ var OAuth = require('../lib/oauth');
 var Tweet = {};
 
 /**
- * Unfollow members in list.
- *
- * @param {Array} members
- *
- * @return {}
- */
-
-Tweet.unfollowUsersInList = function *unfollowUsersInList(members) {
-  for (var i = 0; i < members.length; i++) {
-    unfollowMember(members[i].id);
-  }
-};
-
-/**
- * Get members in list.
- *
- * @param {Number} id
- *
- * @return {Array}
- */
-
-Tweet.getMembersInList = function *getMembersInList(id) {
-  var params = { list_id: id, skip_status: true, include_entities: false };
-  var res = yield Twitter.get('lists/members', params);
-  return res.users;
-};
-
-/**
- * Get `Dodo` list id
- *
- * @param {String} userId
- *
- * @return {Number}
- */
-
-Tweet.getDodoListId = function *getDodoList(userId) {
-  var res = yield Twitter.get('lists/ownerships', { user_id: userId });
-  var lists = res.lists;
-  for (var i = 0; i < lists.length; i++) {
-    if (~lists[i].name.indexOf('dodo'))
-      return lists[i].id;
-  }
-  throw 'Dodo list not found.';
-};
-
-/**
  * Get Request token.
  *
  * @return {String}
@@ -90,6 +44,52 @@ Tweet.getUser = function *gerUser(request) {
     secret: access.secret
   };
   return user;
+};
+
+/**
+ * Get `Dodo` list id
+ *
+ * @param {String} userId
+ *
+ * @return {Number}
+ */
+
+Tweet.getDodoListId = function *getDodoList(userId) {
+  var res = yield Twitter.get('lists/ownerships', { user_id: userId });
+  var lists = res.lists;
+  for (var i = 0; i < lists.length; i++) {
+    if (~lists[i].name.indexOf('dodo'))
+      return lists[i].id;
+  }
+  throw 'Dodo list not found.';
+};
+
+/**
+ * Get members in list.
+ *
+ * @param {Number} id
+ *
+ * @return {Array}
+ */
+
+Tweet.getMembersInList = function *getMembersInList(id) {
+  var params = { list_id: id, skip_status: true, include_entities: false };
+  var res = yield Twitter.get('lists/members', params);
+  return res.users;
+};
+
+/**
+ * Unfollow members in list.
+ *
+ * @param {Array} members
+ *
+ * @return {}
+ */
+
+Tweet.unfollowUsersInList = function *unfollowUsersInList(members) {
+  for (var i = 0; i < members.length; i++) {
+    unfollowMember(members[i].id);
+  }
 };
 
 /**
