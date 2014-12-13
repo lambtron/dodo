@@ -25,7 +25,8 @@ Routes.index = function *index() {
  */
 
 Routes.oauth = function *oauth() {
-  // Send to twitter.
+  var token = yield Tweet.getRequestToken();
+  this.body = yield render('oauth', { token: token });
 };
 
 /**
