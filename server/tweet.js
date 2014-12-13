@@ -13,12 +13,50 @@ var OAuth = require('../lib/oauth');
 var Tweet = {};
 
 /**
- * Unfollow user.
+ * Unfollow members in list.
+ *
+ * @param {Array} members
+ *
+ * @return {}
  */
 
+Tweet.unfollowUsersInList = function *unfollowUsersInList(members) {
+  for (var i = 0; i < members.length; i++) {
+    unfollowMember(members[i].id);
+  }
+};
+
 /**
- * Get `Dodo` list.
+ * Get members in list.
+ *
+ * @param {Number} id
+ *
+ * @return {Array}
  */
+
+Tweet.getMembersInList = function *getMembersInList(id) {
+  var params = { list_id: id, skip_status: true, include_entities: false };
+  var res = yield Twitter.get('lists/members', params);
+  return res.users;
+};
+
+/**
+ * Get `Dodo` list id
+ *
+ * @param {String} userId
+ *
+ * @return {Number}
+ */
+
+Tweet.getDodoListId = function *getDodoList(userId) {
+  var res = yield Twitter.get('lists/ownerships', { user_id: userId });
+  var lists = res.lists;
+  for (var i = 0; i < lists.length; i++) {
+    if (~lists[i].name.indexOf('dodo'))
+      return lists[i].id;
+  }
+  throw 'Dodo list not found.';
+};
 
 /**
  * Get Request token.
@@ -59,3 +97,11 @@ Tweet.getUser = function *gerUser(request) {
  */
 
 module.exports = Tweet;
+
+/**
+ * Private function to unfollow one member.
+ */
+
+function unfollowMember(userId) {
+  Twitter.post('friendships/destroy', {user_id: userId});
+}
