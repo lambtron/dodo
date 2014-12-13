@@ -5,6 +5,13 @@ Dodo
 
 > Periodically unfollow Twitter users in a private Twitter list.
 
+### How to use
+
+1. Create a [list](https://support.twitter.com/articles/76460-using-twitter-lists) on Twitter with the word 'Dodo' in its title
+2. Go to [Dodo](http://dodo-twitter.herokuapp.com/) and authorize your Twitter account
+3. Follow Twitter users and add them to your 'Dodo' list
+4. Every month, this app will automatically unfollow them for you
+
 ### Running Locally
 
 Make sure you have `node 0.11.x` installed, as [Koa](http://koajs.com/) requires generators.
