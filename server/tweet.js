@@ -32,18 +32,26 @@ Tweet.getRequestToken = function *getRequestToken() {
 };
 
 /**
- * Get Access token.
+ * Get User and related tokens.
  *
  * @param {Object} request
  *   @property {String} token
  *   @property {String} secret
  *   @property {String} verifier
+ *
+ * @return {Object}
  */
 
-Tweet.getAccessToken = function *getAccessToken(request) {
+Tweet.getUser = function *gerUser(request) {
   var access = yield OAuth.thunkedGetOAuthAccessToken(request.token, '',
     request.verifier);
-  return access;
+  var user = {
+    user_id: access.res.user_id,
+    handle: access.res.screen_name,
+    token: access.token,
+    secret: access.secret
+  };
+  return user;
 };
 
 /**
