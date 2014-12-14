@@ -47,59 +47,7 @@ Tweet.getUser = function *gerUser(request) {
 };
 
 /**
- * Get `Dodo` list id.
- *
- * @param {String} userId
- *
- * @return {Number}
- */
-
-Tweet.getDodoListId = function *getDodoListId(userId) {
-  var res = yield Twitter.get('lists/ownerships', { user_id: userId });
-  var lists = res.lists;
-  for (var i = 0; i < lists.length; i++) {
-    if (~lists[i].name.indexOf('dodo'))
-      return lists[i].id;
-  }
-  throw 'Dodo list not found.';
-};
-
-/**
- * Get members in list.
- *
- * @param {Number} id
- *
- * @return {Array}
- */
-
-Tweet.getMembersInList = function *getMembersInList(id) {
-  var params = { list_id: id, skip_status: true, include_entities: false };
-  var res = yield Twitter.get('lists/members', params);
-  return res.users;
-};
-
-/**
- * Unfollow members in list.
- *
- * @param {Array} members
- */
-
-Tweet.unfollowMembersInList = function *unfollowMembersInList(members) {
-  for (var i = 0; i < members.length; i++) {
-    unfollowMember(members[i].id);
-  }
-};
-
-/**
  * Expose `Tweet`
  */
 
 module.exports = Tweet;
-
-/**
- * Private function to unfollow one member.
- */
-
-function unfollowMember(userId) {
-  Twitter.post('friendships/destroy', {user_id: userId});
-}

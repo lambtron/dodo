@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-var Twitter = require('../server/tweet');
 var Users = require('../lib/users');
+var Dodo = require('../lib/dodo');
 
 /**
  * Main function.
@@ -13,9 +13,11 @@ var Users = require('../lib/users');
 function *main() {
   var users = yield Users.find({});
   for (var i = 0; i < users.length; i++) {
-    var dodoListId = yield Twitter.getDodoListId(users[i].id);
-    var members = yield Twitter.getMembersInList(dodoListId);
-    Twitter.unfollowMembersInList(members);
+    Dodo.authenticateUser(users[i].token, users[i].secret);
+    var dodoListId = yield Dodo.getDodoListId(users[i].id);
+    var members = yield Dodo.getMembersInList(dodoListId);
+    yield Dodo.unfollowMembersInList(members);
+    Dodo.destroy();
   }
 }
 
