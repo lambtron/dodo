@@ -5,6 +5,10 @@ Dodo
 
 > Periodically unfollow Twitter users in a private Twitter list.
 
+Related services:
+- [dodo-unfollow](https://github.com/lambtron/dodo-unfollow)
+- [dodo-trapper](https://github.com/lambtron/dodo-trapper)
+
 ### How to use
 
 1. Create a [list](https://support.twitter.com/articles/76460-using-twitter-lists) on Twitter with the word 'Dodo' in its title
