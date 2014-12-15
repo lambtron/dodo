@@ -6,8 +6,8 @@ Dodo
 > Periodically unfollow Twitter users in a private Twitter list.
 
 Related services:
-- [dodo-unfollow](https://github.com/lambtron/dodo-unfollow)
-- [dodo-trapper](https://github.com/lambtron/dodo-trapper)
+- [unfollow](https://github.com/lambtron/dodo-unfollow)
+- [trapper](https://github.com/lambtron/dodo-trapper)
 
 ### How to use
 
