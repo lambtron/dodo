@@ -33,7 +33,7 @@ var routes = require('../server/routes.js');
 app.use(route.get('/', routes.index));
 app.use(route.post('/api/oauth', routes.oauth));
 app.use(route.get('/api/callback', routes.callback));
-app.use(route.post('/api/dodo', routes.dodo));
+app.use(route.post('/api/dodo', routes.addDodo));
 
 /**
  * Listen on PORT.

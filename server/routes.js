@@ -49,7 +49,7 @@ Routes.callback = function *callback() {
  * Add new dodo to list.
  */
 
-Routes.dodo = function *dodo() {
+Routes.addDodo = function *addDodo() {
   if (!this.request.body) return;
   var body = this.request.body;
   var user = yield Users.findOne({ user_id: body.userId });
