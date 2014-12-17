@@ -55,7 +55,8 @@ Routes.dodo = function *dodo() {
   if (!user) return this.body = 'User is not authenticated in Dodo.';
   var dodo = new Dodo(user.user_id);
   yield dodo.authenticateUser(user.token, user.secret);
-  this.body = yield dodo.addToDodo(body.dodoId);
+  yield dodo.addToDodo(body.dodoId);
+  this.body = yield dodo.destroy();
 };
 
 /**
