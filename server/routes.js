@@ -44,6 +44,16 @@ Routes.callback = function *callback() {
 };
 
 /**
+ * Add new dodo to list.
+ */
+
+Routes.dodo = function *dodo() {
+  // Check to see if user exists.
+  // Create new Dodo with user tokens.
+  // Add dodo to user's Dodo list.
+};
+
+/**
  * Expose `Routes`.
  */
 
