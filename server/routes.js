@@ -9,10 +9,11 @@ var Dodo = require('../lib/dodo');
 var Tweet = require('./tweet');
 
 /**
- * Define `Routes`.
+ * Define `Routes` and `dodo`.
  */
 
 var Routes = {};
+var dodo = new Dodo();
 
 /**
  * Render index html page.
@@ -53,9 +54,8 @@ Routes.dodo = function *dodo() {
   var body = this.request.body;
   var user = yield Users.findOne({ user_id: body.userId });
   if (!user) return this.body = 'User is not authenticated in Dodo.';
-  var dodo = new Dodo(user.user_id);
   yield dodo.authenticateUser(user.token, user.secret);
-  yield dodo.addToDodo(body.dodoId);
+  yield dodo.addToDodo(user.user_id, body.dodoId);
   this.body = yield dodo.destroy();
 };
 
