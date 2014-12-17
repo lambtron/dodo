@@ -5,6 +5,7 @@
 
 var render = require('../lib/render');
 var Users = require('../lib/users');
+var Dodo = require('../lib/dodo');
 var Tweet = require('./tweet');
 
 /**
@@ -48,9 +49,13 @@ Routes.callback = function *callback() {
  */
 
 Routes.dodo = function *dodo() {
-  // Check to see if user exists.
-  // Create new Dodo with user tokens.
-  // Add dodo to user's Dodo list.
+  if (!this.request.body) return;
+  var body = this.request.body;
+  var user = yield Users.findOne({ user_id: body.userId });
+  if (!user) return this.body = 'User is not authenticated in Dodo.';
+  var dodo = new Dodo(user.user_id);
+  yield dodo.authenticateUser(user.token, user.secret);
+  this.body = yield dodo.addToDodo(body.dodoId);
 };
 
 /**
