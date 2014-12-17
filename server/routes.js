@@ -13,7 +13,6 @@ var Tweet = require('./tweet');
  */
 
 var Routes = {};
-var dodo = new Dodo();
 
 /**
  * Render index html page.
@@ -54,9 +53,9 @@ Routes.addDodo = function *addDodo() {
   var body = this.request.body;
   var user = yield Users.findOne({ user_id: body.userId });
   if (!user) return this.body = 'User is not authenticated in Dodo.';
-  yield dodo.authenticateUser(user.token, user.secret);
-  yield dodo.addToDodo(user.user_id, body.dodoId);
-  this.body = yield dodo.destroy();
+  var dodo = new Dodo(user.user_id, user.token, user.secret);
+  yield dodo.addToDodo(body.dodoId);
+  dodo = null;
 };
 
 /**
