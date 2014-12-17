@@ -8,6 +8,7 @@ Dodo
 Related services:
 - [unfollow](https://github.com/lambtron/dodo-unfollow)
 - [trapper](https://github.com/lambtron/dodo-trapper)
+- [hunter](https://github.com/lambtron/dotjs-scripts/blob/master/twitter.com.js)
 
 ### How to use
 
