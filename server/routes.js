@@ -49,13 +49,17 @@ Routes.callback = function *callback() {
  */
 
 Routes.addDodo = function *addDodo() {
-  if (!this.request.body) return;
+  if (!this.request.body)
+    return this.body = 'Need to pass dodoId and userId in body.';
   var body = this.request.body;
+  if (!body.dodoId || !body.userId)
+    return this.body = 'Both dodoId and userId required.';
   var user = yield Users.findOne({ user_id: body.userId });
   if (!user) return this.body = 'User is not authenticated in Dodo.';
   var dodo = new Dodo(user.user_id, user.token, user.secret);
   yield dodo.addToDodo(body.dodoId);
   dodo = null;
+  return this.body = 'OK';
 };
 
 /**
