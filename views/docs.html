@@ -9,9 +9,31 @@
     <hr>
   </div>
   <div class="row">
-    <h4>Getting Started</h4>
     <p>
-
+      You can also add people to your Dodo list by sending an HTTP request. Note that you must authorize your Twitter account with Dodo in order to use this API.
+    </p>
+    <br>
+    <h4>Endpoint</h4>
+    <p>https://dodo-twitter.herokuapp.com/api/dodo</p>
+    <br>
+    <h4>Sample request</h4>
+    <p>The <code>userId</code> is your <a href="http://mytwitterid.com/">Twitter userId</a>.
+    The <code>dodoId</code> is the Twitter userId of the account you want to add to your Dodo list.
+    The content-type must be <code>application/x-www-form-urlencoded</code>.
+    </p>
+    <pre><code>{
+  userId: 123413414
+  dodoId: 32534234145
+}
+</code></pre>
+    <br>
+    <h4>Sample response</h4>
+    <pre><code>OK
+</code></pre>
+    <br>
+    <h4>Example</h4>
+    <p>
+      This <a herf="https://github.com/lambtron/dotjs-scripts/blob/master/twitter.com.js#L30">code</a> in the dotjs script initiates the POST request to the endpoint. <a href="https://github.com/lambtron/dodo/blob/master/server/routes.js#L51-L61">This</a> is how the server processes that request.
     </p>
     <hr>
   </div>
