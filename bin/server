@@ -34,6 +34,7 @@ app.use(route.get('/', routes.index));
 app.use(route.post('/api/oauth', routes.oauth));
 app.use(route.get('/api/callback', routes.callback));
 app.use(route.post('/api/dodo', routes.addDodo));
+app.use(route.get('/:page', routes.showPage));
 
 /**
  * Listen on PORT.

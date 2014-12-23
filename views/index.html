@@ -1,11 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <a href="https://github.com/lambtron/dodo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
-  <div class="row text-center" style="margin: 50px 0px 30px 0px">
-    <img class="center-block" width=260 src="https://camo.githubusercontent.com/62004c2b59a578d2a71107acf52ee7b2666d9d5a/687474703a2f2f6678636e6577732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f31312f646f646f5f626972642e6a7067" />
-    <h1>Dodo</h1>
-  </div>
   <div class="row" style="font-size: 1.4em;">
     <p>
       Automatically unfollow Twitter users in a private Twitter list each month.
@@ -30,9 +25,11 @@
     <p>
       1. A <a href="https://github.com/defunkt/dotjs">~/.js script</a> that automatically adds and mutes accounts you follow to your Dodo list (script is <a href="https://github.com/lambtron/dotjs-scripts/blob/master/twitter.com.js">here</a>)
       <br>
-      2. <a href="https://github.com/lambtron/dodo-trapper">Trapper</a>, a service that automatically follows back users who have followed you throughout the day (runs daily)
+      2. <a href="/trapper">Trapper</a>, a service that automatically follows back users who have followed you throughout the day (runs daily)
       <br>
-      3. Our HTTP Dodo-API that mutes and adds an account to your Dodo list
+      3. Our <a href="/docs">HTTP Dodo-API</a> that mutes and adds an account to your Dodo list
+      <br>
+      4. <a href="/hunter">Hunter</a>, a service that listens to the firehose of tweets and follows/mutes/adds to dodo list the tweeter
     </p>
     <hr>
   </div>

@@ -61,6 +61,14 @@ Routes.addDodo = function *addDodo() {
 };
 
 /**
+ * Show pages.
+ */
+
+Routes.showPage = function *showPage(page) {
+  this.body = yield render(page);
+};
+
+/**
  * Expose `Routes`.
  */
 
